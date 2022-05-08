@@ -10,6 +10,6 @@ public class pruebacontroller {
 
     @GetMapping("/hola")
     public String saludar(){
-        return "<h1>hola mundo</h1>";
+        return "<h1>hola mundo se realizo un cambio</h1>";
     }
 }

@@ -10,6 +10,6 @@ public class pruebacontroller {
 
     @GetMapping("/hola")
     public String saludar(){
-        return "<h1>hola mundo se realizo un cambio</h1>";
+        return "<h1>hola mundo se realizo un cambio<p>Hola se agrega este parrafo para validar que este funcionando el merrge y el branch</p></h1>";
     }
 }

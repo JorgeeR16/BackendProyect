@@ -16,21 +16,22 @@ public class Proveedor implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProveedor;
-    private String nameProduct;
+    private String nameProveedor;
 
-    
+
     public Long getIdProveedor() {
         return idProveedor;
     }
     public void setIdProveedor(Long idProveedor) {
         this.idProveedor = idProveedor;
     }
-    public String getNameProduct() {
-        return nameProduct;
+    public String getNameProveedor() {
+        return nameProveedor;
     }
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setNameProveedor(String nameProveedor) {
+        this.nameProveedor = nameProveedor;
     }
+
 
 
 }

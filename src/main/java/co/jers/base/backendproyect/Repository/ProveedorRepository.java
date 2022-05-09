@@ -19,16 +19,11 @@ public class ProveedorRepository {
         return (List<Proveedor>) proveedorCRUD.findAll();
     }
 
-    public Optional<Proveedor> getProveedor(Long id) {
+    public Optional<Proveedor> getProveedorId(Long id) {
         return proveedorCRUD.findById(id);
     }
 
     public Proveedor save(Proveedor prov) {
         return proveedorCRUD.save(prov);
     }
-
-    public void delete(Proveedor prov) {
-        proveedorCRUD.delete(prov);
-    }
-
 }

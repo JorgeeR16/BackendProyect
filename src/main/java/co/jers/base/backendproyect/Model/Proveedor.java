@@ -17,6 +17,8 @@ public class Proveedor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProveedor;
     private String nameProveedor;
+    private String direccion;
+    private String telefono;
 
 
     public Long getIdProveedor() {
@@ -30,6 +32,18 @@ public class Proveedor implements Serializable{
     }
     public void setNameProveedor(String nameProveedor) {
         this.nameProveedor = nameProveedor;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
 

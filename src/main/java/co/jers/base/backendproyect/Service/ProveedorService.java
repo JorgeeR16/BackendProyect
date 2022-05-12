@@ -48,6 +48,13 @@ public class ProveedorService {
                 if (prove.getNameProveedor() != null) {
                     pax.get().setNameProveedor(prove.getNameProveedor());
                 }
+                if (prove.getDireccion() != null) {
+                    pax.get().setDireccion(prove.getDireccion());
+                }
+                if (prove.getTelefono() != null) {
+                    pax.get().setTelefono(prove.getTelefono());
+                }
+
                 return proveedorLogic.save(pax.get());
             }
         }

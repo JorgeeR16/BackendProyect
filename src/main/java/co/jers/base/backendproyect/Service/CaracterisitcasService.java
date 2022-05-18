@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.jers.base.backendproyect.Model.Caracteristica;
+import co.jers.base.backendproyect.Model.Producto;
 import co.jers.base.backendproyect.Repository.CaracteristicaRepositorio;
+import co.jers.base.backendproyect.Repository.ProductoRepository;
 
 @Service
 public class CaracterisitcasService {
 
     @Autowired
     private CaracteristicaRepositorio caracteristicaService;
+    @Autowired
+    private ProductoRepository productoService;
 
     public List<Caracteristica> getAll() {
         return caracteristicaService.getAll();
@@ -25,11 +29,23 @@ public class CaracterisitcasService {
 
     public Caracteristica save(Caracteristica cat) {
         if (cat.getIdCaracterisitica() == null) {
-            return caracteristicaService.save(cat);
+            if (cat.getProductos() != null) {
+                if (cat.getProductos().get(0) != null) {
+                    Optional<Producto> pva = productoService.getId(cat.getProductos().get(0).getIdProducto());
+                    if (!pva.isEmpty()) {
+                        return caracteristicaService.save(cat);
+                    }
+                }
+            }
         } else {
             Optional<Caracteristica> pca = caracteristicaService.getId(cat.getIdCaracterisitica());
             if (pca.isEmpty()) {
-                return caracteristicaService.save(cat);
+                if (cat.getProductos().get(0) != null) {
+                    Optional<Producto> pva = productoService.getId(cat.getProductos().get(0).getIdProducto());
+                    if (!pva.isEmpty()) {
+                        return caracteristicaService.save(cat);
+                    }
+                }
             }
         }
         return cat;

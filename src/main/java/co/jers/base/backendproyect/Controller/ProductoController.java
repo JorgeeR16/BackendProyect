@@ -35,7 +35,7 @@ public class ProductoController {
         return productoController.getAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Producto> getId(@PathVariable("id") Long id) {
         return productoController.getId(id);
@@ -53,9 +53,8 @@ public class ProductoController {
         return productoController.update(pro);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-
     public void delete(@PathVariable("id") Long id) {
         productoController.delete(id);
     }

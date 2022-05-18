@@ -35,7 +35,7 @@ public class CaracteristicasController {
         return caracteristicasController.getAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Caracteristica> getId(@PathVariable("id") Long id) {
         return caracteristicasController.getId(id);

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,6 +24,10 @@ public class Caracteristica implements Serializable {
     private String material;
     private String genero;
     private String precio;
+
+    @OneToOne
+    @JoinColumn(name = "proveedorId")
+    private Proveedor proveedor;
 
     @ManyToOne
     @JoinColumn(name = "idProducto")
@@ -83,6 +88,14 @@ public class Caracteristica implements Serializable {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
     public Caracteristica(Long idCaracterisitica, String color, String estilo, String material, String genero,

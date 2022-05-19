@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 
-@Table(name="proveedores")
-public class Proveedor implements Serializable{
+@Table(name = "proveedores")
+public class Proveedor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,28 +24,33 @@ public class Proveedor implements Serializable{
     public Long getIdProveedor() {
         return idProveedor;
     }
+
     public void setIdProveedor(Long idProveedor) {
         this.idProveedor = idProveedor;
     }
+
     public String getNameProveedor() {
         return nameProveedor;
     }
+
     public void setNameProveedor(String nameProveedor) {
         this.nameProveedor = nameProveedor;
     }
+
     public String getDireccion() {
         return direccion;
     }
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
     public String getTelefono() {
         return telefono;
     }
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-
 
 }

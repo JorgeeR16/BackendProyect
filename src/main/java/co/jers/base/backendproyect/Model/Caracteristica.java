@@ -1,16 +1,16 @@
 package co.jers.base.backendproyect.Model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "caracteristicas")
@@ -24,9 +24,10 @@ public class Caracteristica implements Serializable {
     private String genero;
     private String precio;
 
-    @ManyToMany
-    @JoinTable(name = "caracteristica_producto", joinColumns = @JoinColumn(name = "caracteristica_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
-    private List<Producto> productos;// =new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "idProducto")
+    @JsonIgnoreProperties("caracteristicas")
+    private Producto producto;
 
     public Long getIdCaracterisitica() {
         return idCaracterisitica;
@@ -76,16 +77,16 @@ public class Caracteristica implements Serializable {
         this.precio = precio;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public Caracteristica(Long idCaracterisitica, String color, String estilo, String material, String genero,
-            String precio, List<Producto> productos) {
+            String precio) {
         super();
         this.idCaracterisitica = idCaracterisitica;
         this.color = color;
@@ -93,18 +94,7 @@ public class Caracteristica implements Serializable {
         this.material = material;
         this.genero = genero;
         this.precio = precio;
-        this.productos = productos;
-    }
 
-    public Caracteristica(String color, String estilo, String material, String genero, String precio,
-            List<Producto> productos) {
-        super();
-        this.color = color;
-        this.estilo = estilo;
-        this.material = material;
-        this.genero = genero;
-        this.precio = precio;
-        this.productos = productos;
     }
 
     public Caracteristica(String color, String estilo, String material, String genero, String precio) {
@@ -118,9 +108,4 @@ public class Caracteristica implements Serializable {
     public Caracteristica() {
         super();
     }
-
-    public void añadirProducto(Producto producto) {
-        this.productos.add(producto);
-    }
-
 }

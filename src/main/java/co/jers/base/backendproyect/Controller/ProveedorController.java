@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,10 +40,10 @@ public class ProveedorController {
         return proveedorControl.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Proveedor> getProveedorId(@PathVariable("id") long id) {
-        return proveedorControl.getId(id);
+    public Optional<Proveedor> getProveedorId(@RequestBody Proveedor prove) {
+        return proveedorControl.getId(prove);
     }
 
     @PostMapping("/save")
@@ -59,10 +58,10 @@ public class ProveedorController {
         return proveedorControl.update(prove);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id) {
-        return proveedorControl.delete(id);
+    public boolean delete(@RequestBody Proveedor prove) {
+        return proveedorControl.delete(prove);
     } 
 
 }

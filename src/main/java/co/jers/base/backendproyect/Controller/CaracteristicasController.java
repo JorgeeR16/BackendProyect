@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,10 +35,10 @@ public class CaracteristicasController {
         return caracteristicasController.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Caracteristica> getId(@PathVariable("id") Long id) {
-        return caracteristicasController.getId(id);
+    public Optional<Caracteristica> getId(@RequestBody Caracteristica cat) {
+        return caracteristicasController.getId(cat);
     }
 
     @PostMapping("/save")
@@ -49,14 +49,14 @@ public class CaracteristicasController {
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Caracteristica update(@RequestBody Caracteristica cat){
+    public Caracteristica update(@RequestBody Caracteristica cat) {
         return caracteristicasController.update(cat);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id){
-        return caracteristicasController.delete(id);
+    public boolean delete(@RequestBody Caracteristica cat) {
+        return caracteristicasController.delete(cat);
     }
 
 }

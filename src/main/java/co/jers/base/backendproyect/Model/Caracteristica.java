@@ -23,16 +23,21 @@ public class Caracteristica implements Serializable {
     private String estilo;
     private String material;
     private String genero;
-    private String precio;
+    private Long precio;
 
     @OneToOne
-    @JoinColumn(name = "proveedorId")
+    @JoinColumn(name = "idProveedor")
     private Proveedor proveedor;
 
     @ManyToOne
     @JoinColumn(name = "idProducto")
-    @JsonIgnoreProperties("caracteristicas")
+    @JsonIgnoreProperties({"caracteristicas","producto"})
     private Producto producto;
+
+    @ManyToOne
+    @JoinColumn(name = "idInventario")
+    @JsonIgnoreProperties({"caracteristicas","inventario"})
+    private Inventario inventario;
 
     public Long getIdCaracterisitica() {
         return idCaracterisitica;
@@ -40,6 +45,14 @@ public class Caracteristica implements Serializable {
 
     public void setIdCaracterisitica(Long idCaracterisitica) {
         this.idCaracterisitica = idCaracterisitica;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
 
     public String getColor() {
@@ -74,11 +87,11 @@ public class Caracteristica implements Serializable {
         this.genero = genero;
     }
 
-    public String getPrecio() {
+    public Long getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(Long precio) {
         this.precio = precio;
     }
 
@@ -99,7 +112,7 @@ public class Caracteristica implements Serializable {
     }
 
     public Caracteristica(Long idCaracterisitica, String color, String estilo, String material, String genero,
-            String precio) {
+            Long precio) {
         super();
         this.idCaracterisitica = idCaracterisitica;
         this.color = color;
@@ -110,7 +123,7 @@ public class Caracteristica implements Serializable {
 
     }
 
-    public Caracteristica(String color, String estilo, String material, String genero, String precio) {
+    public Caracteristica(String color, String estilo, String material, String genero, Long precio) {
         this.color = color;
         this.estilo = estilo;
         this.material = material;

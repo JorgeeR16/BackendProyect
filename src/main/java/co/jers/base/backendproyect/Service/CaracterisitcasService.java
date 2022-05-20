@@ -21,8 +21,8 @@ public class CaracterisitcasService {
         return caracteristicaService.getAll();
     }
 
-    public Optional<Caracteristica> getId(Long id) {
-        return caracteristicaService.getId(id);
+    public Optional<Caracteristica> getId(Caracteristica cat) {
+        return caracteristicaService.getId(cat.getIdCaracterisitica());
     }
 
     public Caracteristica save(Caracteristica cat) {
@@ -43,19 +43,19 @@ public class CaracterisitcasService {
 
             Optional<Caracteristica> pca = caracteristicaService.getId(cat.getIdCaracterisitica());
             if (!pca.isEmpty()) {
-                if (pca.get().getColor() != null) {
+                if (cat.getColor() != null) {
                     pca.get().setColor(cat.getColor());
                 }
-                if (pca.get().getEstilo() != null) {
+                if (cat.getEstilo() != null) {
                     pca.get().setEstilo(cat.getEstilo());
                 }
-                if (pca.get().getMaterial() != null) {
+                if (cat.getMaterial() != null) {
                     pca.get().setMaterial(cat.getMaterial());
                 }
-                if (pca.get().getGenero() != null) {
+                if (cat.getGenero() != null) {
                     pca.get().setGenero(cat.getGenero());
                 }
-                if (pca.get().getPrecio() != null) {
+                if (cat.getPrecio() != null) {
                     pca.get().setPrecio(cat.getPrecio());
                 }
                 return caracteristicaService.save(pca.get());
@@ -64,8 +64,8 @@ public class CaracterisitcasService {
         return cat;
     }
 
-    public boolean delete(Long id) {
-        Optional<Caracteristica> pax = getId(id);
+    public boolean delete(Caracteristica cat) {
+        Optional<Caracteristica> pax = getId(cat);
         if (!pax.isEmpty()) {
             caracteristicaService.delete(pax.get());
             return true;

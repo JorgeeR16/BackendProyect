@@ -18,8 +18,8 @@ public class ProveedorService {
         return proveedorLogic.getAll();
     }
 
-    public Optional<Proveedor> getId(Long id) {
-        return proveedorLogic.getId(id);
+    public Optional<Proveedor> getId(Proveedor prove) {
+        return proveedorLogic.getId(prove.getIdProveedor());
     }
 
     /*
@@ -61,8 +61,8 @@ public class ProveedorService {
         return prove;
     }
 
-    public boolean delete(Long id) {
-        Optional<Proveedor> pau = getId(id);
+    public boolean delete(Proveedor prove) {
+        Optional<Proveedor> pau = getId(prove);
         if (!pau.isEmpty()) {
             proveedorLogic.delete(pau.get());
             return true;

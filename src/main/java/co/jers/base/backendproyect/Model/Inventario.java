@@ -1,14 +1,14 @@
 package co.jers.base.backendproyect.Model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,26 +16,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "inventarios")
 public class Inventario implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idInventario;
     private Long cantidadProducto;
     private String talla;
 
-
-    @OneToMany(cascade = { CascadeType.PERSIST}, mappedBy = "inventario")
-    @JsonIgnoreProperties({"Caracteristica","inventario"})
-    private List<Caracteristica> caracteristicasInventario;
-
-
-    public List<Caracteristica> getCaracteristicasInventario() {
-        return caracteristicasInventario;
-    }
-
-    public void setCaracteristicasInventario(List<Caracteristica> caracteristicasInventario) {
-        this.caracteristicasInventario = caracteristicasInventario;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idCaracteristica")
+    @JsonIgnoreProperties("inventarios")
+    private Caracteristica caracteristica;
 
     public Long getIdInventario() {
         return idInventario;
@@ -60,5 +51,14 @@ public class Inventario implements Serializable {
     public void setTalla(String talla) {
         this.talla = talla;
     }
+
+    public Caracteristica getCaracteristica() {
+        return caracteristica;
+    }
+
+    public void setCaracteristica(Caracteristica caracteristica) {
+        this.caracteristica = caracteristica;
+    }
+
 
 }

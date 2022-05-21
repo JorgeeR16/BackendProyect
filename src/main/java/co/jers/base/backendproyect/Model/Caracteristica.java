@@ -1,13 +1,16 @@
 package co.jers.base.backendproyect.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,13 +34,32 @@ public class Caracteristica implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idProducto")
-    @JsonIgnoreProperties({"caracteristicas","producto"})
+    @JsonIgnoreProperties({ "caracteristicas", "producto" })
     private Producto producto;
 
-    @ManyToOne
-    @JoinColumn(name = "idInventario")
-    @JsonIgnoreProperties({"caracteristicas","inventario"})
-    private Inventario inventario;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "caracteristica")
+    @JsonIgnoreProperties("caracteristica")
+    private List<Inventario> inventarios;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "caracteristica")
+    @JsonIgnoreProperties("caracteristica")
+    private List<Imagen> imagenes;
+
+    public List<Imagen> getImagenes() {
+		return imagenes;
+	}
+
+	public void setImagenes(List<Imagen> imagenes) {
+		this.imagenes = imagenes;
+	}
+
+	public List<Inventario> getInventarios() {
+        return inventarios;
+    }
+
+    public void setInventarios(List<Inventario> inventarios) {
+        this.inventarios = inventarios;
+    }
 
     public Long getIdCaracterisitica() {
         return idCaracterisitica;
@@ -45,14 +67,6 @@ public class Caracteristica implements Serializable {
 
     public void setIdCaracterisitica(Long idCaracterisitica) {
         this.idCaracterisitica = idCaracterisitica;
-    }
-
-    public Inventario getInventario() {
-        return inventario;
-    }
-
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
     }
 
     public String getColor() {

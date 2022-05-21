@@ -40,19 +40,19 @@ public class ProductoController {
         return productoController.getId(pro);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Producto save(@RequestBody Producto pro) {
         return productoController.save(pro);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Producto update(@RequestBody Producto pro) {
         return productoController.update(pro);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@RequestBody Producto pro) {
         productoController.delete(pro);

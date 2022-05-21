@@ -46,19 +46,19 @@ public class ProveedorController {
         return proveedorControl.getId(prove);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Proveedor save(@RequestBody Proveedor prove) {
         return proveedorControl.save(prove);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     @ResponseStatus(HttpStatus.CREATED) // cuando se hace una peticion el protocolo va a devolver un codigo "201"
     public Proveedor update(@RequestBody Proveedor prove) {
         return proveedorControl.update(prove);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@RequestBody Proveedor prove) {
         return proveedorControl.delete(prove);

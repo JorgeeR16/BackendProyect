@@ -41,19 +41,19 @@ public class CaracteristicasController {
         return caracteristicasController.getId(cat);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Caracteristica save(@RequestBody Caracteristica cat) {
         return caracteristicasController.save(cat);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Caracteristica update(@RequestBody Caracteristica cat) {
         return caracteristicasController.update(cat);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@RequestBody Caracteristica cat) {
         return caracteristicasController.delete(cat);

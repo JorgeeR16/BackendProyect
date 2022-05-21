@@ -58,6 +58,12 @@ public class CaracterisitcasService {
                 if (cat.getPrecio() != null) {
                     pca.get().setPrecio(cat.getPrecio());
                 }
+                if (cat.getProveedor() != null) {
+                    pca.get().setProveedor(cat.getProveedor());
+                }
+                if (cat.getProducto() != null) {
+                    pca.get().setProducto(cat.getProducto());
+                }
                 return caracteristicaService.save(pca.get());
             }
         }

@@ -44,6 +44,9 @@ public class InventarioService {
                 if (inv.getTalla() != null) {
                     invpro.get().setTalla(inv.getTalla());
                 }
+                if (inv.getCaracteristica() != null) {
+                    invpro.get().setCaracteristica(inv.getCaracteristica());
+                }
                 return inventarioRepository.save(invpro.get());
             }
         }

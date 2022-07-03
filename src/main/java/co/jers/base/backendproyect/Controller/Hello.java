@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Hello {
-    @GetMapping({"/","/hola"})
+    @GetMapping({ "/", "/hola" })
     public String bootstrap() {
         return "<!doctype html>" +
                 "<html lang='en'>" +
@@ -20,11 +20,12 @@ public class Hello {
                 " </head>" +
                 "<body>" +
                 " <h1>Hello, world!</h1>" +
-                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/proveedor/all'>Prove</a>"+
-                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/producto/all'>Produ</a>"+
-                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/inventario/all'>Inven</a>"+
-                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/imagen/all'>Imag</a>"+
-                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/caracteristica/all'>Caracteri</a>"+
+                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/proveedor/all'>Prove</a>" +
+                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/producto/all'>Produ</a>" +
+                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/inventario/all'>Inven</a>" +
+                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/imagen/all'>Imag</a>" +
+                "<a class='btn btn-primary' href='https://jestorers.herokuapp.com/api/caracteristica/all'>Caracteri</a>"
+                +
 
                 "    <!-- Optional JavaScript; choose one of the two! -->" +
                 "    <!-- Option 1: Bootstrap Bundle with Popper -->" +
@@ -39,7 +40,5 @@ public class Hello {
                 "-->" +
                 "</body>" +
                 "</html>";
-
     }
-    
 }

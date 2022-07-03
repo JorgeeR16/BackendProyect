@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Proveedor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProveedor;
     private String nameProveedor;
     private String direccion;
